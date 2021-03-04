@@ -20,8 +20,12 @@ const LoginAdmin = () => {
       console.log(res.data.token);
 
       let token = res.data.token;
+      let idParticipant = res.data.id;
+      let nameParticipant = res.data.name
 
       localStorage.setItem("token", token);
+      localStorage.setItem("idParticipant", idParticipant);
+      localStorage.setItem("nameParticipant", nameParticipant);
      
       
      

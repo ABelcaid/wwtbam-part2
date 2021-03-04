@@ -1,5 +1,5 @@
 import './login.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -8,6 +8,7 @@ const Login = () => {
 
   const [phone ,setPhone] = useState('');
   const [password,setPassword] = useState('');
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,8 +20,16 @@ const Login = () => {
     axios.post(`http://localhost:8080/participant/login`, prticipant)
     .then(res => {
       console.log(res.data);
+
+      let token = res.data.token;
+      let idParticipant = res.data.id;
+      let nameParticipant = res.data.name
+
+      localStorage.setItem("participantToken", token);      
+      localStorage.setItem("idParticipant", idParticipant);
+      localStorage.setItem("nameParticipant", nameParticipant);
      
-      
+      history.push('/group')
      
     })
 

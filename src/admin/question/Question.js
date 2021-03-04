@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Question = () => {
@@ -7,6 +7,10 @@ const Question = () => {
     const [answer ,setAnswer] = useState('');
     const [false_choices,setFalseChoices] = useState('');
     const [points,setPoints] = useState('');
+
+    // ------------------------------
+
+    const [questions , setQuestions] = useState(null);
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -18,12 +22,12 @@ const Question = () => {
       let false_choices_array = false_choices.split(",");
 
 
-const questions = {
+    const questions = {
     question : question,
     answer : answer,
     false_choices : false_choices_array,
     points : points
-};
+}   ;
   
    
   
@@ -42,16 +46,26 @@ const questions = {
     }
 
 
+  useEffect(()=>{
+
+      axios.get('http://localhost:8080/question/getQuestion/all')
+      .then(function (response) {
+       
+        
+        setQuestions(response.data)
+      
+      }).catch(function (err) {
+        console.log(err);
+    });
+    
+    })
+
 
     return ( 
-
-
-
-        <div className="Question">
+    <div className="Question">
             <h1>Add Question</h1>
-
-            <div className="addForm">
-            <form onSubmit={handleSubmit}>
+    <div className="addForm">
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label >Question</label>
           <input
@@ -101,9 +115,43 @@ const questions = {
         
         <button type="submit" className="btn btn-primary">Add New Question</button>
       </form>
-            </div>
-        </div>
-     );
+    </div>
+
+    <div className="questionTable">
+    <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Question</th>
+            <th scope="col">Right answer</th>
+            <th scope="col">Points</th>
+          </tr>
+        </thead>
+        <tbody>
+        {
+          questions &&
+          questions.map((question) =>(
+
+            <tr key={question._id}>
+            <td>{question.question}</td>
+            <td>{question.answer}</td>
+            <td>{question.points}</td>
+          </tr>
+            
+          ))
+        }
+
+         
+        
+         
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+
+      
+  
+);
 }
  
 export default Question;
