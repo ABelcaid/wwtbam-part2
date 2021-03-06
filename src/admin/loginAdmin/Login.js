@@ -15,7 +15,7 @@ const LoginAdmin = () => {
 
  
 
-    axios.post(`http://localhost:8080/admin/login`, admin)
+    axios.post(`${process.env.REACT_APP_URL_API}/admin/login`, admin)
     .then(res => {
       console.log(res.data.token);
 

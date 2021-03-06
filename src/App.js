@@ -9,6 +9,7 @@ import ValidateParticipant from './admin/validateParticipation/ValidateParticipa
 import Group from './group/group';
 import CreateGroup from './group/createGroup';
 import JoinGroup from './group/joinGroup';
+import Play from './game/Play';
 
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
         </Route>
         <Route exact path="/joinGroup">
           <JoinGroup />
+        </Route>
+        <Route exact path="/play">
+          <Play/>
         </Route>
       </Switch>
     </div>

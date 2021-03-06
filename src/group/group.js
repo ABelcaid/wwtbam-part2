@@ -1,5 +1,5 @@
 import { Link, useHistory } from "react-router-dom";
-
+import './group.css';
 import axios from 'axios';
 
 const Group = () => {
@@ -14,7 +14,9 @@ const Group = () => {
         let participantToken = localStorage.getItem("participantToken");
 
 
-        axios.post('http://localhost:8080/group/newGroup', {id_participant : id_participant } , {
+       
+
+        axios.post(`${process.env.REACT_APP_URL_API}/group/newGroup`, {id_participant : id_participant } , {
             headers: {
               'Authorization': `Bearer ${participantToken}` 
             }}
@@ -47,15 +49,22 @@ const Group = () => {
         <div className="group">
             <h1>welcome to the jumanji .....</h1>
 
-            
-            <button type="button" className="btn btn-primary" onClick={createGroup}>Create new Group</button>
+            <div className="btnGroup">
+
+
+              
+                  <button type="button" className="btn " onClick={createGroup}>Create new Group</button>
+
+                  
+
+                    <Link to={'/joinGroup'}>
+                    <button type="button" className="btn">Join Group</button>
+
+                    </Link>
+            </div>
 
             
-
-            <Link to={'/joinGroup'}>
-            <button type="button" className="btn btn-secondary">Join Group</button>
-
-            </Link>
+          
 
         </div>
      );

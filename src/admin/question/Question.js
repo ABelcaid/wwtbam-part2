@@ -31,7 +31,7 @@ const Question = () => {
   
    
   
-      axios.post(`http://localhost:8080/question/addQuestion`, questions, {
+      axios.post(`${process.env.REACT_APP_URL_API}/question/addQuestion`, questions, {
         headers: {
           'Authorization': `Bearer ${token}` 
         }}

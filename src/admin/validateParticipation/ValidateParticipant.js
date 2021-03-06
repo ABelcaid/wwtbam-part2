@@ -7,7 +7,7 @@ const ValidateParticipant = () => {
 
     useEffect(()=>{
 
-        axios.get('http://localhost:8080/participant/all')
+        axios.get(`${process.env.REACT_APP_URL_API}/participant/all`)
         .then(function (response) {
          
           

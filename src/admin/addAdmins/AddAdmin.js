@@ -16,7 +16,7 @@ const AddAdmin = () => {
   
    
   
-      axios.post(`http://localhost:8080/admin/add`, admin, {
+      axios.post(`${process.env.REACT_APP_URL_API}/admin/add`, admin, {
         headers: {
           'Authorization': `Bearer ${token}` 
         }}

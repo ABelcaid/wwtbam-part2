@@ -17,7 +17,7 @@ const JoinGroup = () => {
   
    
   
-      axios.put(`http://localhost:8080/group/joinGroup/${codeGroupe}`, {id_new_participant : id_participant} , {
+      axios.put(`${process.env.REACT_APP_URL_API}/group/joinGroup/${codeGroupe}`, {id_new_participant : id_participant} , {
         headers: {
           'Authorization': `Bearer ${token}` 
         }}
@@ -38,7 +38,7 @@ const JoinGroup = () => {
 
             <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label >Code group</label>
+          
           <input
            type="text" 
            className="form-control"  
@@ -51,7 +51,7 @@ const JoinGroup = () => {
 
       
         
-        <button type="submit" className="btn btn-primary">Jion group </button>
+        <button type="submit" className="btn ">Jion group </button>
       </form>
         </div>
      );

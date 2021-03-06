@@ -1,0 +1,29 @@
+.play{
+  
+    width: 40%;
+    height: 1%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 300px;
+    margin: auto;
+}
+
+
+
+
+
+.btn {
+    width: 302px;
+    height: 69px;
+    margin: 11% 0% 6% 0%;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgb(95 95 95);
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+  }

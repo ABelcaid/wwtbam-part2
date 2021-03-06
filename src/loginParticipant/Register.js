@@ -23,7 +23,7 @@ const Register = () => {
 
    
 
-      axios.post(`http://localhost:8080/participant/register`, prticipant)
+      axios.post(`${process.env.REACT_APP_URL_API}/participant/register`, prticipant)
       .then(res => {
         console.log('You have been registred ... ');
         history.push('/')
