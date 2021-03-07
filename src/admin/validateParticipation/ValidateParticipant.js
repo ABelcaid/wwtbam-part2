@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import './validate.css'
+
 const ValidateParticipant = () => {
 
     const [participants , setParticipants] = useState(null);
@@ -35,10 +37,13 @@ const ValidateParticipant = () => {
     }
 
     return ( 
-        <div className="validateParticipant">
+        <div className="validateParticipant tbl-content">
             <h1>Validate Particpant</h1>
 
-            <table className="table">
+            
+
+
+        <table className="table">
         <thead>
           <tr>
             <th scope="col">Full Name</th>
@@ -58,7 +63,7 @@ const ValidateParticipant = () => {
             <td>{participants.phone}</td>
             <td>{participants.email}</td>
             <td>{participants.age}</td>
-            <td><button type="button" onClick={()=> handleValidate(participants._id)} className="btn btn-secondary">Validate</button></td>
+            <td><button type="button" onClick={()=> handleValidate(participants._id)} className="btnValidate">Validate</button></td>
 
           </tr>
             
