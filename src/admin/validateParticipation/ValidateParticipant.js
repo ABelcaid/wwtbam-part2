@@ -38,10 +38,10 @@ const ValidateParticipant = () => {
 
     return ( 
         <div className="validateParticipant tbl-content">
-            <h1>Validate Particpant</h1>
+            <h1 >Validate Particpant</h1>
 
             
-
+            tabTitle
 
         <table className="table">
         <thead>

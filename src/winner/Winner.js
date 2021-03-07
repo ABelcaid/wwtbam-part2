@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../group/group.css';
 
 
 const Winner = () => {
@@ -46,7 +47,7 @@ const Winner = () => {
 
     return ( 
         <div className="winner">
-            <h1>the winner </h1>
+            <h1>The Winner is :  </h1>
             <h1>{winner.full_name}</h1>
             <h1>Gift :{gift.name} </h1>
         </div>

@@ -1,3 +1,4 @@
+
 .admin{
   
     width: 70%;
@@ -38,4 +39,35 @@
 	border-radius:20px;
 	display:inline-block;
 
+}
+.Question,.addAdmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+}
+.addForm{
+    padding: 20px;
+    width: 500px;
+    /* position: absolute; */
+    /* left: 50%; */
+    /* top: 50%; */
+    /* transform: translate(-50%, -50%); */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: white;
+    margin-top: 4%;
+
+
+}
+.questionTable{
+    
+    margin-top: 2%;
+    width: 80%;
+    padding: 3%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: white;
+  
 }

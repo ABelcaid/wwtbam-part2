@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../admin.css'
 
 const Question = () => {
 
@@ -63,8 +64,9 @@ const Question = () => {
 
     return ( 
     <div className="Question">
-            <h1>Add Question</h1>
+            
     <div className="addForm">
+    <h1>Add Question</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label >Question</label>

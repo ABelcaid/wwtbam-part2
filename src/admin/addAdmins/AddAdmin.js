@@ -38,9 +38,10 @@ const AddAdmin = () => {
 
 
         <div className="addAdmin">
-            <h1>Add admin</h1>
+            
 
             <div className="addForm">
+            <h1>Add admin</h1>
             <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label >Full Name</label>
