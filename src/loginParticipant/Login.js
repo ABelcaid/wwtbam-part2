@@ -20,17 +20,30 @@ const Login = () => {
 
     axios.post(`${process.env.REACT_APP_URL_API}/participant/login`, prticipant)
     .then(res => {
-      console.log(res.data);
 
-      let token = res.data.token;
-      let idParticipant = res.data.id;
-      let nameParticipant = res.data.name
+      console.log(res);
 
-      localStorage.setItem("participantToken", token);      
-      localStorage.setItem("idParticipant", idParticipant);
-      localStorage.setItem("nameParticipant", nameParticipant);
+      if (!res.data.message) {
+        let token = res.data.token;
+        let idParticipant = res.data.id;
+        let nameParticipant = res.data.name
+  
+        localStorage.setItem("token", token);      
+        localStorage.setItem("idParticipant", idParticipant);
+        localStorage.setItem("nameParticipant", nameParticipant);
+       
+       history.push('/group')
+        
+      } else {
+        alert(res.data.message)
+      }
+
      
-      history.push('/group')
+
+
+      
+
+
      
     })
 

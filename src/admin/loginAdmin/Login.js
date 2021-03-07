@@ -1,12 +1,14 @@
 import './login.css';
 import { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 
 const LoginAdmin = () => {
 
   const [phone ,setPhone] = useState('');
   const [password,setPassword] = useState('');
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,13 +21,22 @@ const LoginAdmin = () => {
     .then(res => {
       console.log(res.data.token);
 
-      let token = res.data.token;
-      let idParticipant = res.data.id;
-      let nameParticipant = res.data.name
+      if (!res.data.message) {
 
-      localStorage.setItem("token", token);
-      localStorage.setItem("idParticipant", idParticipant);
-      localStorage.setItem("nameParticipant", nameParticipant);
+        let token = res.data.token;
+
+  
+        localStorage.setItem("token", token);
+       
+
+        history.push('/admin/home')
+        
+      } else {
+        alert(res.data.message)
+        
+      }
+
+ 
      
       
      

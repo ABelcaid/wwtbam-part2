@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 const JoinGroup = () => {
 
     const [codeGroupe , setcodeGroupe] = useState('');
+
+    const history = useHistory()
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -24,6 +27,7 @@ const JoinGroup = () => {
       )
       .then(res => {
         console.log(res.data);
+        history.push('/play')
        
         
        

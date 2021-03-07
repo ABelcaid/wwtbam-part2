@@ -1,6 +1,8 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory,withRouter } from "react-router-dom";
 import './group.css';
 import axios from 'axios';
+
+
 
 const Group = () => {
 
@@ -11,7 +13,7 @@ const Group = () => {
     let createGroup = ()=> {
 
         let id_participant =  localStorage.getItem('idParticipant');
-        let participantToken = localStorage.getItem("participantToken");
+        let participantToken = localStorage.getItem("token");
 
 
        
@@ -47,7 +49,7 @@ const Group = () => {
 
     return ( 
         <div className="group">
-            <h1>welcome to the jumanji .....</h1>
+            <h1>What do you want to do ?</h1>
 
             <div className="btnGroup">
 
@@ -70,4 +72,4 @@ const Group = () => {
      );
 }
  
-export default Group;
+export default withRouter(Group);

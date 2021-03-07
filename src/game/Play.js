@@ -1,12 +1,17 @@
 import './game.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router';
+
 const Play = () => {
 
     const [question , setQuestion] = useState(null);
     const [questionNum , setQuestionNum] = useState(1);
-    const [questionEnd , setQuestionEnd] = useState(false);
+    
 
+    const [participantReady , setParticipantReady] = useState(true);
+
+    const history = useHistory()
 
     let handleClick = (answer,idQuestion)=>{
 
@@ -48,9 +53,6 @@ const Play = () => {
                 axios.post(`${process.env.REACT_APP_URL_API}/round/createRound/${idGroup}`, round)
                 .then(res => {
 
-                    console.log('====================================');
-                    console.log(res.data);
-                    console.log('====================================');
                 
                 
                 
@@ -58,7 +60,39 @@ const Play = () => {
             
         }else{
 
-            setQuestionEnd(true)
+        let idGroup = localStorage.getItem("group_id");
+        let token = localStorage.getItem("token");
+
+
+        
+
+
+        // check if we have 4 palyer ...
+
+        axios.post(`${process.env.REACT_APP_URL_API}/winner/add/${idGroup}`)
+        .then(function (response) {
+
+
+
+
+        localStorage.setItem('idWinner' , response.data.id_participant)
+        localStorage.setItem('idGift' , response.data.gift)
+        
+        
+         
+            
+          
+            
+        
+        }).catch(function (err) {
+          console.log(err);
+      });
+
+        
+
+           
+
+            history.push('/winner')
 
         }
 
@@ -71,17 +105,36 @@ const Play = () => {
 
     useEffect(()=>{
 
+        let idGroup = localStorage.getItem("group_id");
+
+
+        // check if we have 4 palyer ...
+
+        axios.get(`${process.env.REACT_APP_URL_API}/round/createRound/${idGroup}`)
+        .then(function (response) {
+
+
+         if(!response.data.error){
+            setParticipantReady(false)
+         }
+         
+        
+        
+         
+            
+          
+            
+        
+        }).catch(function (err) {
+          console.log(err);
+      });
+
         
        
         // console.log(numQuestion);
 
         axios.get(`${process.env.REACT_APP_URL_API}/question/getQuestion`)
         .then(function (response) {
-
-
-         console.log('*********************************');
-         console.log(response.data);
-         console.log('*********************************');
         
          
             setQuestion(response.data)
@@ -100,9 +153,9 @@ const Play = () => {
     return ( 
         <div className="play">
             
-            {questionEnd ? (
+            {participantReady ? (
                  <div className="endGame">
-                 <h1>Game over </h1>
+                 <h1>You need 4 player to Start the game ! </h1>
              </div>
             ):(
                 <>
@@ -137,7 +190,11 @@ const Play = () => {
                 </div>
             </div>
                 </>
-            )}
+            )
+
+
+            
+            }
 
            
 
