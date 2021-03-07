@@ -6,8 +6,12 @@ const Winner = () => {
 
     const [winner ,setWinner] = useState('');
 
+    const [gift ,setGift] = useState('');
+
     useEffect(()=>{
         let idWinner = localStorage.getItem("idWinner");
+
+        let idGift = localStorage.getItem("idGift");
 
         console.log('====================================');
         console.log(idWinner);
@@ -23,7 +27,18 @@ const Winner = () => {
           console.log(err);
       });
 
-        
+
+      axios.get(`${process.env.REACT_APP_URL_API}/gifts/getGift/${idGift}`)
+      .then(function (response) {
+       
+        setGift(response.data)
+          console.log(response.data);
+      
+      }).catch(function (err) {
+        console.log(err);
+    });
+
+    
        
     
       
@@ -33,6 +48,7 @@ const Winner = () => {
         <div className="winner">
             <h1>the winner </h1>
             <h1>{winner.full_name}</h1>
+            <h1>Gift :{gift.name} </h1>
         </div>
      );
 }
